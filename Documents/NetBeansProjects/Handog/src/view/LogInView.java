@@ -42,7 +42,7 @@ public class LogInView extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("itlog");
+        jLabel2.setText("titeeeee");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 330, 360));
