@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author jovde
@@ -45,7 +47,6 @@ public class TableView extends javax.swing.JFrame {
         backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -83,6 +84,11 @@ public class TableView extends javax.swing.JFrame {
         addBtn.setText("add");
 
         fNameTb.setText("First Name");
+        fNameTb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fNameTbActionPerformed(evt);
+            }
+        });
 
         lNameTb.setText("Last Name");
         lNameTb.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +183,12 @@ public class TableView extends javax.swing.JFrame {
 
         descBtn.setText("descending");
 
-        backBtn.setText("back?");
+        backBtn.setText("Home");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -231,6 +242,19 @@ public class TableView extends javax.swing.JFrame {
     private void lNameTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameTbActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lNameTbActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        HomeView home = new HomeView();
+        home.setVisible(true);
+        home.pack();
+        home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void fNameTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameTbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fNameTbActionPerformed
 
     /**
      * @param args the command line arguments
