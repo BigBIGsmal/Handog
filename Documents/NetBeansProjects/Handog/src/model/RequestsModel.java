@@ -6,6 +6,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 import model.Request;
 
@@ -17,7 +18,7 @@ public class RequestsModel {
         
     private String brgy="",city="", category="", email="", contactNum="", duration="", status="";
     private LocalDate date;
-    private Queue<Request> request = new Queue<>();
+    private Queue<Request> request = new LinkedList<Request>();
 
     
     
