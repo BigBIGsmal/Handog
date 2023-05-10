@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -139,40 +139,34 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel2" pref="194" max="32767" attributes="0"/>
+                          <Component id="back" pref="194" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" alignment="1" pref="40" max="32767" attributes="0"/>
+                      <Component id="back" alignment="1" pref="40" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="back">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="13" style="1"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Back"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backMouseClicked"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        jLabel2.setFont(new java.awt.Font(&quot;Tahoma&quot;, java.awt.Font.BOLD, 15)); // increase font size to 16&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        jLabel2.setFont(new java.awt.Font(&quot;Tahoma&quot;, java.awt.Font.BOLD, 13)); // reset font size to 12&#xa;    }&#xa;});"/>
-                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JTextField" name="jTextField1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jTextField1"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jTextField1.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;jTextField1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;jTextField1.setText(&quot;Search&quot;); // set placeholder text&#xa;&#xa;// Add FocusListener to remove placeholder text when field gains focus&#xa;jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        if (jTextField1.getText().equals(&quot;Search&quot;)) {&#xa;            jTextField1.setText(&quot;&quot;);&#xa;            jTextField1.setForeground(java.awt.Color.BLACK); // set text color back to black&#xa;        }&#xa;    }&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (jTextField1.getText().isEmpty()) {&#xa;            jTextField1.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;            jTextField1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;            jTextField1.setText(&quot;Search&quot;); // set placeholder text&#xa;        }&#xa;    }&#xa;});&#xa;&#xa;// Add ActionListener to handle user input&#xa;jTextField1.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        jTextField1ActionPerformed(evt);&#xa;    }&#xa;});"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="40" width="180" height="30"/>
@@ -209,27 +203,24 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel3" pref="194" max="32767" attributes="0"/>
+                          <Component id="donateRequests" pref="194" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" alignment="1" pref="40" max="32767" attributes="0"/>
+                      <Component id="donateRequests" alignment="1" pref="40" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="donateRequests">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="13" style="1"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Donation Requests"/>
                   </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        jLabel3.setFont(new java.awt.Font(&quot;Tahoma&quot;, java.awt.Font.BOLD, 15)); // increase font size to 16&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        jLabel3.setFont(new java.awt.Font(&quot;Tahoma&quot;, java.awt.Font.BOLD, 13)); // reset font size to 12&#xa;    }&#xa;});"/>
-                  </AuxValues>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="donateRequestsMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -250,33 +241,27 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel5" pref="194" max="32767" attributes="0"/>
+                          <Component id="donate" pref="194" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel5" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="donate" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="donate">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="13" style="1"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Donate"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel5MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="donateMouseClicked"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        jLabel5.setFont(new java.awt.Font(&quot;Tahoma&quot;, java.awt.Font.BOLD, 15)); // increase font size to 16&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        jLabel5.setFont(new java.awt.Font(&quot;Tahoma&quot;, java.awt.Font.BOLD, 13)); // reset font size to 12&#xa;    }&#xa;});"/>
-                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -297,8 +282,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="224" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="home" min="-2" pref="195" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" pref="230" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -310,7 +295,7 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="home" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -322,19 +307,13 @@
                     <Property name="text" type="java.lang.String" value="jLabel4"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="home">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="13" style="1"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Home"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="homeMouseClicked"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        jLabel1.setFont(new java.awt.Font(&quot;Tahoma&quot;, java.awt.Font.BOLD, 15)); // increase font size to 16&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        jLabel1.setFont(new java.awt.Font(&quot;Tahoma&quot;, java.awt.Font.BOLD, 13)); // reset font size to 12&#xa;    }&#xa;});"/>
-                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

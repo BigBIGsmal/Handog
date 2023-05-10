@@ -3,7 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="focusable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -78,23 +77,23 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel3" pref="224" max="32767" attributes="0"/>
+                          <Component id="donationReq" pref="224" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" alignment="1" pref="40" max="32767" attributes="0"/>
+                      <Component id="donationReq" alignment="1" pref="40" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="donationReq">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Donation Requests"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel3MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="donationReqMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -116,7 +115,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="224" max="-2" attributes="0"/>
+                          <Component id="searchTransac" min="-2" pref="224" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" pref="230" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -129,7 +128,7 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="searchTransac" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -141,12 +140,12 @@
                     <Property name="text" type="java.lang.String" value="jLabel4"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="searchTransac">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search Transaction"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchTransacMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -168,26 +167,26 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel5" pref="224" max="32767" attributes="0"/>
+                          <Component id="donate" pref="224" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel5" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="donate" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="donate">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Donate"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel5MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="donateMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -258,7 +257,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel7" min="-2" pref="224" max="-2" attributes="0"/>
+                          <Component id="logOut" min="-2" pref="224" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -267,18 +266,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabel7" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="logOut" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="logOut">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Log Out"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel7MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logOutMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>

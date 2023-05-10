@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.HomeController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -24,6 +25,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 
 
 
@@ -46,13 +48,48 @@ public class TableView extends javax.swing.JFrame {
         
         // Set the frame to not be resizable
         setResizable(false);
-        
-       
     
     }
 
 
+    //User Defined getters and setters for input of user in
+    //the table View
+    public JButton getBackButton(){
+        return backBtn;
+    }
+    public JButton getAddButton() {
+	        return this.addBtn;
+	    }	
+    public String getFirstName() {	
+        return this.fNameTb.getText();
+            }
+    public String getLastName(){
+        return this.lNameTb.getText();
+    }
+    public String getPhoneNum(){
+        return this.pNumberTb.getText();
+    }
+    
+    public String getEmail() {		
+        return this.eMailTb.getText();
+	}
+    public String getAddress() {
+        return this.hAddressTb.getText();
+	}
+    public String getDonationCategory(){
+        return this.donationTypeCb.toString();
+    }
+    public Double getDonationAmount(){
+        return Double.valueOf(donationAmtTB.getText());
 
+    }
+    public JButton getClearButton(){
+        return this.clrBtn;
+    }
+
+
+    
+    
 
 
 
@@ -76,6 +113,7 @@ public class TableView extends javax.swing.JFrame {
         eMailTb = new javax.swing.JTextField();
         hAddressTb = new javax.swing.JTextField();
         donationTypeCb = new javax.swing.JComboBox<>();
+        donationAmtTB = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -124,6 +162,11 @@ public class TableView extends javax.swing.JFrame {
         });
 
         addBtn.setText("add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         fNameTb.setText("First Name");
         fNameTb.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +203,14 @@ public class TableView extends javax.swing.JFrame {
             }
         });
 
-        donationTypeCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        donationTypeCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Healthcare", "Food", "Material Goods", "Any" }));
+
+        donationAmtTB.setText("Amount");
+        donationAmtTB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                donationAmtTBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -169,6 +219,7 @@ public class TableView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(donationAmtTB)
                     .addComponent(donationTypeCb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(hAddressTb)
                     .addComponent(eMailTb)
@@ -186,17 +237,19 @@ public class TableView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(fNameTb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addComponent(lNameTb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(28, 28, 28)
                 .addComponent(pNumberTb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(30, 30, 30)
                 .addComponent(eMailTb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(28, 28, 28)
                 .addComponent(hAddressTb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(26, 26, 26)
                 .addComponent(donationTypeCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(donationAmtTB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clrBtn)
                     .addComponent(addBtn))
@@ -348,17 +401,17 @@ public class TableView extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "First Name", "Last Name", "Phone Number", "Email", "Address", "Donation"
+                "First Name", "Last Name", "Phone Number", "Email", "Address", "Category", "Amount"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -366,6 +419,11 @@ public class TableView extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+        }
         // Set the background color of the table
         jTable1.setBackground(new java.awt.Color(255, 248, 238));
 
@@ -432,7 +490,7 @@ public class TableView extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(505, Short.MAX_VALUE)
+                .addContainerGap(494, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(ascBtn)
@@ -542,10 +600,7 @@ public class TableView extends javax.swing.JFrame {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        HomeView home = new HomeView();
-        home.setVisible(true);
-        home.pack();
-        home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -575,6 +630,16 @@ public class TableView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_descBtnActionPerformed
 
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+        // do actions when add button
+        
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void donationAmtTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donationAmtTBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_donationAmtTBActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -602,6 +667,8 @@ public class TableView extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -617,6 +684,7 @@ public class TableView extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JButton clrBtn;
     private javax.swing.JButton descBtn;
+    private javax.swing.JTextField donationAmtTB;
     private javax.swing.JComboBox<String> donationTypeCb;
     private javax.swing.JTextField eMailTb;
     private javax.swing.JTextField fNameTb;
@@ -630,8 +698,4 @@ public class TableView extends javax.swing.JFrame {
     private javax.swing.JTextField lNameTb;
     private javax.swing.JTextField pNumberTb;
     // End of variables declaration//GEN-END:variables
-
-    void setOpaque(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

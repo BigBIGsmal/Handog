@@ -179,7 +179,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="360" width="191" height="-1"/>
+                  <AbsoluteConstraints x="20" y="320" width="191" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -225,7 +225,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="320" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="20" y="360" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -238,7 +238,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="140" y="320" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="140" y="360" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -288,12 +288,12 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="back">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Back"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backMouseClicked"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
