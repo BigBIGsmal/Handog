@@ -17,6 +17,12 @@ public class HomeView extends javax.swing.JFrame {
      */
     public HomeView() {
         initComponents();
+         // Center the frame on the screen
+        setLocationRelativeTo(null);
+        
+        // Set the frame to not be resizable
+        setResizable(false);
+    
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +50,7 @@ public class HomeView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
 
         bg.setBackground(new java.awt.Color(0, 0, 0));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

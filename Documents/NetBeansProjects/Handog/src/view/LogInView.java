@@ -19,6 +19,13 @@ public class LogInView extends javax.swing.JFrame {
      */
     public LogInView() {
         initComponents();
+         // Center the frame on the screen
+        setLocationRelativeTo(null);
+        
+        // Set the frame to not be resizable
+        setFocusableWindowState(false);
+getContentPane().setFocusable(false);
+ 
     }
 
     /**
@@ -40,6 +47,7 @@ public class LogInView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

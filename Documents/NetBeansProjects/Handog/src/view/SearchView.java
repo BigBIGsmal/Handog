@@ -17,6 +17,12 @@ public class SearchView extends javax.swing.JFrame {
      */
     public SearchView() {
         initComponents();
+         // Center the frame on the screen
+        setLocationRelativeTo(null);
+        
+        // Set the frame to not be resizable
+        setResizable(false);
+   
     }
 
     /**
@@ -92,6 +98,7 @@ public class SearchView extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(251, 218, 237));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel2.setText("Back");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,15 +119,50 @@ public class SearchView extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 15)); // increase font size to 16
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 13)); // reset font size to 12
+            }
+        });
+
         jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 200, 40));
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 180, 30));
+        jTextField1.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+        jTextField1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+        jTextField1.setText("Search"); // set placeholder text
+
+        // Add FocusListener to remove placeholder text when field gains focus
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (jTextField1.getText().equals("Search")) {
+                    jTextField1.setText("");
+                    jTextField1.setForeground(java.awt.Color.BLACK); // set text color back to black
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (jTextField1.getText().isEmpty()) {
+                    jTextField1.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+                    jTextField1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+                    jTextField1.setText("Search"); // set placeholder text
+                }
+            }
+        });
+
+        // Add ActionListener to handle user input
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Clear");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +174,7 @@ public class SearchView extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(249, 200, 228));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel3.setText("Donation Requests");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -147,10 +190,20 @@ public class SearchView extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 15)); // increase font size to 16
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 13)); // reset font size to 12
+            }
+        });
+
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 200, 40));
 
         jPanel5.setBackground(new java.awt.Color(251, 218, 237));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel5.setText("Donate");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -173,12 +226,22 @@ public class SearchView extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 15)); // increase font size to 16
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 13)); // reset font size to 12
+            }
+        });
+
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 200, 40));
 
         jPanel6.setBackground(new java.awt.Color(247, 182, 219));
 
         jLabel4.setText("jLabel4");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel1.setText("Home");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -205,6 +268,15 @@ public class SearchView extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
+
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 15)); // increase font size to 16
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 13)); // reset font size to 12
+            }
+        });
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 200, 40));
 

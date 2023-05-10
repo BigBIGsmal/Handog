@@ -17,6 +17,12 @@ public class RequestsView extends javax.swing.JFrame {
      */
     public RequestsView() {
         initComponents();
+         // Center the frame on the screen
+        setLocationRelativeTo(null);
+        
+        // Set the frame to not be resizable
+        setResizable(false);
+   
     }
 
     /**
