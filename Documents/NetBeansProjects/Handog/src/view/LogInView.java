@@ -125,7 +125,7 @@ public class LogInView extends javax.swing.JFrame {
         // TODO add your handling code here:
             String enteredUser = jTextField1.getText();
     String enteredPass = new String(jPasswordField1.getPassword());
-    if (enteredUser.equals("pogi") && enteredPass.equals("raf")) {
+    if (enteredUser.equals("a") && enteredPass.equals("a")) {
         
                 UserModel model = new UserModel();
                  HomeView home = new HomeView();

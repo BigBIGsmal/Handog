@@ -4,6 +4,11 @@
  */
 package view;
 
+import static controller.RequestsController.createDuration;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDate;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -243,10 +248,13 @@ public JTextField getEMailTb1() {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
+
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void acceptedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptedActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_acceptedActionPerformed
 
     private void hAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hAddressActionPerformed
