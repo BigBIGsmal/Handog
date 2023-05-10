@@ -4,8 +4,11 @@
  */
 package view;
 
+import controller.HomeController;
+import controller.UserController;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import model.UserModel;
 
 
 /**
@@ -19,13 +22,6 @@ public class LogInView extends javax.swing.JFrame {
      */
     public LogInView() {
         initComponents();
-         // Center the frame on the screen
-        setLocationRelativeTo(null);
-        
-        // Set the frame to not be resizable
-        setFocusableWindowState(false);
-getContentPane().setFocusable(false);
- 
     }
 
     /**
@@ -47,7 +43,6 @@ getContentPane().setFocusable(false);
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setFocusable(false);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -130,8 +125,11 @@ getContentPane().setFocusable(false);
         // TODO add your handling code here:
             String enteredUser = jTextField1.getText();
     String enteredPass = new String(jPasswordField1.getPassword());
-    if (enteredUser.equals("admin001") && enteredPass.equals("password231")) {
-        HomeView home = new HomeView();
+    if (enteredUser.equals("pogi") && enteredPass.equals("raf")) {
+        
+                UserModel model = new UserModel();
+                 HomeView home = new HomeView();
+                 HomeController controller = new HomeController(model, home);
         home.setVisible(true);
         home.pack();
         home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -170,6 +168,9 @@ getContentPane().setFocusable(false);
         //</editor-fold>
 
         /* Create and display the form */
+       
+                
+                
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogInView().setVisible(true);
