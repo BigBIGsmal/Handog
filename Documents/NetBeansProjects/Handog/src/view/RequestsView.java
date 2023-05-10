@@ -199,7 +199,7 @@ public class RequestsView extends javax.swing.JFrame {
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         // TODO add your handling code here:
-    //    this.dispose();
+        this.dispose();
     }//GEN-LAST:event_backMouseClicked
 
     /**
