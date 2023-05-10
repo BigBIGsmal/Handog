@@ -46,6 +46,8 @@ public class TableView extends javax.swing.JFrame {
         
         // Set the frame to not be resizable
         setResizable(false);
+        
+       
     
     }
 
@@ -628,4 +630,8 @@ public class TableView extends javax.swing.JFrame {
     private javax.swing.JTextField lNameTb;
     private javax.swing.JTextField pNumberTb;
     // End of variables declaration//GEN-END:variables
+
+    void setOpaque(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
