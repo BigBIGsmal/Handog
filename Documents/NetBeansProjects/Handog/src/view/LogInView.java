@@ -4,8 +4,7 @@
  */
 package view;
 
-import controller.HomeController;
-import controller.UserController;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.UserModel;
@@ -129,7 +128,7 @@ public class LogInView extends javax.swing.JFrame {
         
                 UserModel model = new UserModel();
                  HomeView home = new HomeView();
-                 HomeController controller = new HomeController(model, home);
+              
         home.setVisible(true);
         home.pack();
         home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
