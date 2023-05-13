@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Handog-Donate"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -24,12 +25,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" pref="971" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" pref="958" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" pref="619" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" pref="608" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -37,7 +41,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="ff" green="ff" red="cc" type="rgb"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -55,46 +59,12 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel4">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 90]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 90]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 90]"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="970" height="-1"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="970" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="90" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="99" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor" postCode="jPanel2.setBackground(new Color(255, 192, 203, 200));">
               <Dimension value="[250, 5102767]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -106,77 +76,56 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="90" width="-1" height="530"/>
+              <AbsoluteConstraints x="20" y="110" width="210" height="490"/>
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="donationAmtTB" max="32767" attributes="0"/>
-                          <Component id="donationTypeCb" max="32767" attributes="0"/>
-                          <Component id="hAddressTb" max="32767" attributes="0"/>
-                          <Component id="eMailTb" max="32767" attributes="0"/>
-                          <Component id="lNameTb" max="32767" attributes="0"/>
-                          <Component id="fNameTb" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="clrBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="47" max="32767" attributes="0"/>
-                              <Component id="addBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                              <Component id="hAddressTextArea" min="-2" pref="152" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="pNumberTb" alignment="1" max="32767" attributes="0"/>
+                          <Component id="donationTypeCb" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="fNameTb" max="32767" attributes="0"/>
+                              <Component id="lNameTb" alignment="1" max="32767" attributes="0"/>
+                              <Component id="pNumberTb" alignment="1" max="32767" attributes="0"/>
+                              <Component id="eMailTb" alignment="1" max="32767" attributes="0"/>
+                              <Component id="donationAmtTB" alignment="1" pref="174" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Component id="fNameTb" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lNameTb" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="pNumberTb" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="eMailTb" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="hAddressTb" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="hAddressTextArea" min="-2" pref="177" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="donationTypeCb" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="donationAmtTB" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="clrBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="addBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <EmptySpace pref="128" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="clrBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="clear"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="clrBtnMouseEntered"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="addBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="add"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtnActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JTextField" name="fNameTb">
               <Properties>
                 <Property name="text" type="java.lang.String" value="First Name"/>
@@ -185,7 +134,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fNameTbActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fNameTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;fNameTb.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;fNameTb.setText(&quot;First Name&quot;); // set placeholder text&#xa;&#xa;// Add FocusListener to remove placeholder text when field gains focus&#xa;fNameTb.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        if (fNameTb.getText().equals(&quot;First Name&quot;)) {&#xa;            fNameTb.setText(&quot;&quot;);&#xa;            fNameTb.setForeground(java.awt.Color.BLACK); // set text color back to black&#xa;        }&#xa;    }&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (fNameTb.getText().isEmpty()) {&#xa;            fNameTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;            fNameTb.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;            fNameTb.setText(&quot;First Name&quot;); // set placeholder text&#xa;        }&#xa;    }&#xa;});&#xa;&#xa;// Add ActionListener to handle user input&#xa;fNameTb.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        fNameTbActionPerformed(evt);&#xa;    }&#xa;});"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fNameTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;fNameTb.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;fNameTb.setText(&quot;First Name&quot;); // set placeholder text&#xa;&#xa;// Add FocusListener to remove placeholder text when field gains focus&#xa;fNameTb.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        if (fNameTb.getText().equals(&quot;First Name&quot;)) {&#xa;            fNameTb.setText(&quot;&quot;);&#xa;            fNameTb.setForeground(java.awt.Color.BLACK); // set text color back to black&#xa;        }&#xa;    }&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (fNameTb.getText().isEmpty()) {&#xa;            fNameTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;            fNameTb.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;            fNameTb.setText(&quot;First Name&quot;); // set placeholder text&#xa;        }&#xa;    }&#xa;});&#xa;&#xa;// Add ActionListener to handle user input&#xa;fNameTb.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        fNameTbActionPerformed(evt);&#xa;    }&#xa;});&#xa;&#xa;//fNameTb.addKeyListener(new java.awt.event.KeyListener() {&#xa;//    @Override&#xa;//    public void keyReleased(KeyEvent e) {&#xa;//        if (fNameTb.getText().isEmpty()) {&#xa;//            fNameTb.setText(&quot;First Name&quot;);&#xa;//            fNameTb.setCaretPosition(0);&#xa;//        }&#xa;//        if (fNameTb.getText().equals(&quot;First Name&quot;)){&#xa;//            fNameTb.setText(&quot;&quot;);&#xa;//        }&#xa;//        System.out.println(fNameTb.getText());&#xa;//    }&#xa;//    &#xa;//    @Override&#xa;//    public void keyTyped(KeyEvent e) {&#xa;//&#xa;//    }&#xa;//&#xa;//    @Override&#xa;//    public void keyPressed(KeyEvent e) {&#xa;//        &#xa;//    }&#xa;//});"/>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField()"/>
               </AuxValues>
             </Component>
@@ -222,19 +171,15 @@
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="eMailTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;eMailTb.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;eMailTb.setText(&quot;Email&quot;); // set placeholder text&#xa;&#xa;// Add FocusListener to remove placeholder text when field gains focus&#xa;eMailTb.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        if (eMailTb.getText().equals(&quot;Email&quot;)) {&#xa;            eMailTb.setText(&quot;&quot;);&#xa;            eMailTb.setForeground(java.awt.Color.BLACK); // set text color back to black&#xa;        }&#xa;    }&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (eMailTb.getText().isEmpty()) {&#xa;            eMailTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;            eMailTb.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;            eMailTb.setText(&quot;Email&quot;); // set placeholder text&#xa;        }&#xa;    }&#xa;});&#xa;&#xa;// Add ActionListener to handle user input&#xa;eMailTb.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        eMailTbActionPerformed(evt);&#xa;    }&#xa;});"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="hAddressTb">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Address"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hAddressTbActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="hAddressTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;hAddressTb.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;hAddressTb.setText(&quot;Address&quot;); // set placeholder text&#xa;&#xa;// Add FocusListener to remove placeholder text when field gains focus&#xa;hAddressTb.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        if (hAddressTb.getText().equals(&quot;Address&quot;)) {&#xa;            hAddressTb.setText(&quot;&quot;);&#xa;            hAddressTb.setForeground(java.awt.Color.BLACK); // set text color back to black&#xa;        }&#xa;    }&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (hAddressTb.getText().isEmpty()) {&#xa;            hAddressTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;            hAddressTb.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;            hAddressTb.setText(&quot;Address&quot;); // set placeholder text&#xa;        }&#xa;    }&#xa;});&#xa;&#xa;// Add ActionListener to handle user input&#xa;hAddressTb.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        hAddressTbActionPerformed(evt);&#xa;    }&#xa;});"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JComboBox" name="donationTypeCb">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="cc" red="ff" type="rgb"/>
+                </Property>
+                <Property name="editable" type="boolean" value="true"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
                     <StringItem index="0" value="Healthcare"/>
@@ -250,19 +195,25 @@
             </Component>
             <Component class="javax.swing.JTextField" name="donationAmtTB">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Amount"/>
+                <Property name="text" type="java.lang.String" value="Donation Amount"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="donationAmtTBActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="donationAmtTB.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;donationAmtTB.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;donationAmtTB.setText(&quot;Donation Amount&quot;); // set placeholder text&#xa;&#xa;// Add FocusListener to remove placeholder text when field gains focus&#xa;donationAmtTB.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        if (donationAmtTB.getText().equals(&quot;Donation Amount&quot;)) {&#xa;            donationAmtTB.setText(&quot;&quot;);&#xa;            donationAmtTB.setForeground(java.awt.Color.BLACK); // set text color back to black&#xa;        }&#xa;    }&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (donationAmtTB.getText().isEmpty()) {&#xa;            donationAmtTB.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color&#xa;            donationAmtTB.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14)); // set placeholder text font&#xa;            donationAmtTB.setText(&quot;Donation Amount&quot;); // set placeholder text&#xa;        }&#xa;    }&#xa;});&#xa;&#xa;// Add ActionListener to handle user input"/>
+              </AuxValues>
+            </Component>
+            <Component class="java.awt.TextArea" name="hAddressTextArea">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="hAddressTextArea.setText(&quot;Address&quot;);&#xa;hAddressTextArea.setColumns(10);&#xa;&#xa;&#xa;// Set placeholder text color and font&#xa;hAddressTextArea.setForeground(new java.awt.Color(150, 150, 150));&#xa;hAddressTextArea.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14));&#xa;&#xa;// Add FocusListener to remove placeholder text when the field gains focus&#xa;hAddressTextArea.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        if (hAddressTextArea.getText().equals(&quot;Address&quot;)) {&#xa;            hAddressTextArea.setText(&quot;&quot;);&#xa;            hAddressTextArea.setForeground(java.awt.Color.BLACK);&#xa;        }&#xa;    }&#xa;&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (hAddressTextArea.getText().isEmpty()) {&#xa;            hAddressTextArea.setForeground(new java.awt.Color(150, 150, 150));&#xa;            hAddressTextArea.setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 14));&#xa;            hAddressTextArea.setText(&quot;Address&quot;);&#xa;        }&#xa;    }&#xa;});"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="99" type="rgb"/>
-            </Property>
+            <Property name="background" postCode="jPanel3.setBackground(new java.awt.Color(135, 206, 250, 128)); // Translucent sky blue"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[550, 510]"/>
             </Property>
@@ -273,52 +224,48 @@
               <Dimension value="[550, 510]"/>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="// Add timer to update background color of jPanel3 every 500 milliseconds&#xa;int animationDelay = 500; // Milliseconds between color updates&#xa;javax.swing.Timer timer = new javax.swing.Timer(animationDelay, new ActionListener() {&#xa;    private int colorIndex = 0;&#xa;    private java.awt.Color[] colors = {new java.awt.Color(153, 204, 255), new java.awt.Color(255, 153, 153)}; // Array of colors to cycle through&#xa;    @Override&#xa;    public void actionPerformed(ActionEvent e) {&#xa;        jPanel3.setBackground(colors[colorIndex]);&#xa;        colorIndex = (colorIndex + 1) % colors.length;&#xa;    }&#xa;});&#xa;timer.start();"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="250" y="90" width="720" height="530"/>
+              <AbsoluteConstraints x="240" y="110" width="700" height="490"/>
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace pref="494" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="ascBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="descBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="clrBtn" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="addBtn" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="backBtn" min="-2" pref="139" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="635" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ascBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="descBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="401" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="379" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="backBtn" pref="34" max="32767" attributes="0"/>
+                          <Component id="addBtn" alignment="1" max="32767" attributes="0"/>
+                          <Component id="clrBtn" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -333,18 +280,10 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="7" rowCount="4">
-                        <Column editable="true" title="First Name" type="java.lang.String"/>
-                        <Column editable="true" title="Last Name" type="java.lang.String"/>
-                        <Column editable="true" title="Phone Number" type="java.lang.Long"/>
-                        <Column editable="true" title="Email" type="java.lang.String"/>
-                        <Column editable="true" title="Address" type="java.lang.String"/>
-                        <Column editable="true" title="Category" type="java.lang.String"/>
-                        <Column editable="true" title="Amount" type="java.lang.Float"/>
-                      </Table>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String[] {&#xa;        &quot;First Name&quot;, &quot;Last Name&quot;, &quot;Phone Number&quot;, &quot;Email&quot;, &quot;Address&quot;, &quot;Category&quot;, &quot;Amount&quot;, &quot;Date&quot;&#xa;    }&#xa;&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class // Add java.lang.String.class for the Date column&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;}" type="code"/>
                     </Property>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="// Set the background color of the table&#xa;jTable1.setBackground(new java.awt.Color(255, 248, 238));&#xa;&#xa;// Set the foreground color of the table&#xa;jTable1.setForeground(new java.awt.Color(0,0,0));&#xa;&#xa;// Set the font of the table&#xa;jTable1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 11));&#xa;&#xa;// Set the selection background color of the table&#xa;jTable1.setSelectionBackground(new java.awt.Color(255, 192, 203));&#xa;&#xa;// Set the selection foreground color of the table&#xa;jTable1.setSelectionForeground(new java.awt.Color(0,0,0));&#xa;&#xa;// Set the grid color of the table&#xa;jTable1.setGridColor(new java.awt.Color(255, 192, 203));&#xa;&#xa;// Set the row height of the table&#xa;jTable1.setRowHeight(30);&#xa;&#xa;// Set the header font of the table&#xa;jTable1.getTableHeader().setFont(new java.awt.Font(&quot;Segoe UI&quot;, 1, 11));&#xa;&#xa;// Set the header background color of the table&#xa;jTable1.getTableHeader().setBackground(new java.awt.Color(255, 192, 203));&#xa;&#xa;// Set the header foreground color of the table&#xa;jTable1.getTableHeader().setForeground(new java.awt.Color(0,0,0));&#xa;&#xa;// Set the header row height of the table&#xa;jTable1.getTableHeader().setPreferredSize(new java.awt.Dimension(30, 40));&#xa;// Set the grid color of the table&#xa;jTable1.setGridColor(new java.awt.Color(255, 192, 203));&#xa;&#xa;// Set the grid radius and color of the table&#xa;jTable1.setShowGrid(true);&#xa;jTable1.setGridColor(new java.awt.Color(0, 0, 0));&#xa;jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5, true));">
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="// Set the background color of the table&#xa;jTable1.setBackground(new java.awt.Color(255, 255, 255));&#xa;&#xa;// Set the foreground color of the table&#xa;jTable1.setForeground(new java.awt.Color(0, 0, 0));&#xa;&#xa;// Set the font of the table&#xa;jTable1.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 0, 11));&#xa;&#xa;// Set the selection background color of the table&#xa;jTable1.setSelectionBackground(new java.awt.Color(255, 192, 203));&#xa;&#xa;// Set the selection foreground color of the table&#xa;jTable1.setSelectionForeground(new java.awt.Color(0, 0, 0));&#xa;&#xa;// Set the grid color of the table&#xa;jTable1.setGridColor(new java.awt.Color(0, 0, 0));&#xa;&#xa;// Set the row height of the table&#xa;jTable1.setRowHeight(30);&#xa;&#xa;// Set the header font of the table&#xa;jTable1.getTableHeader().setFont(new java.awt.Font(&quot;Segoe UI&quot;, java.awt.Font.BOLD, 11));&#xa;&#xa;// Set the header background color of the table&#xa;jTable1.getTableHeader().setBackground(new java.awt.Color(255, 192, 203));&#xa;&#xa;// Set the header foreground color of the table&#xa;jTable1.getTableHeader().setForeground(new java.awt.Color(0, 0, 0));&#xa;&#xa;// Set the header row height of the table&#xa;jTable1.getTableHeader().setPreferredSize(new java.awt.Dimension(30, 40));&#xa;&#xa;// Set the grid visibility of the table&#xa;jTable1.setShowGrid(true);&#xa;&#xa;// Set the border of the table&#xa;jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));&#xa;// Create a row sorter for the table&#xa;TableRowSorter&lt;TableModel&gt; sorter = new TableRowSorter&lt;&gt;(jTable1.getModel());&#xa;&#xa;// Set the sorting order for the &quot;Donation&quot; column to ascending&#xa;sorter.setSortKeys(List.of(new RowSorter.SortKey(6, SortOrder.ASCENDING))); // Assuming &quot;Donation&quot; column index is 6&#xa;&#xa;// Assign the row sorter to the table&#xa;jTable1.setRowSorter(sorter);&#xa;// Set the cell renderer to align data to the left and add the peso sign&#xa;DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();&#xa;leftRenderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;for (int i = 0; i &lt; jTable1.getColumnCount(); i++) {&#xa;    if (i == 6) { // Check if it&apos;s the &quot;Amount&quot; column&#xa;        jTable1.getColumnModel().getColumn(i).setCellRenderer(new PesoRenderer());&#xa;    } else {&#xa;        jTable1.getColumnModel().getColumn(i).setCellRenderer(leftRenderer);&#xa;    }&#xa;}&#xa;&#xa;// Custom cell renderer for adding the peso sign&#xa;class PesoRenderer extends DefaultTableCellRenderer {&#xa;    public PesoRenderer() {&#xa;        super();&#xa;    }&#xa;&#xa;    @Override&#xa;    protected void setValue(Object value) {&#xa;        if (value != null) {&#xa;            double amount = Double.parseDouble(value.toString());&#xa;            setText(pesoFormat.format(amount)); // Format the value as an integer and add the peso sign&#xa;        } else {&#xa;            setText(&quot;&quot;);&#xa;        }&#xa;    }&#xa;}">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
@@ -390,28 +329,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="ascBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ascending"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ascBtnActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ascBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 25, 10, 25));&#xa;ascBtn.setBackground(new java.awt.Color(51, 153, 255));&#xa;ascBtn.setForeground(java.awt.Color.WHITE);&#xa;ascBtn.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 1, 14)); &#xa;&#xa;ascBtn.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        ascBtn.setBackground(new java.awt.Color(0, 102, 204));&#xa;        ascBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        ascBtn.setBackground(new java.awt.Color(51, 153, 255));&#xa;        ascBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));&#xa;    }&#xa;});&#xa;&#xa;ascBtn.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        ascBtnActionPerformed(evt);&#xa;    }&#xa;});"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="descBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Descending"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descBtnActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="descBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 25, 10, 25));&#xa;descBtn.setBackground(new java.awt.Color(255, 255, 0));&#xa;descBtn.setForeground(java.awt.Color.BLACK);&#xa;descBtn.setFont(new java.awt.Font(&quot;Segoe UI&quot;, 1, 14));&#xa;&#xa;descBtn.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;descBtn.setBackground(new java.awt.Color(255, 204, 0));&#xa;descBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));&#xa;}&#xa;public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;descBtn.setBackground(new java.awt.Color(255, 255, 0));&#xa;descBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));&#xa;}&#xa;});&#xa;&#xa;descBtn.addActionListener(new java.awt.event.ActionListener() {&#xa;public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;descBtnActionPerformed(evt);&#xa;}&#xa;});"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JButton" name="backBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Home"/>
@@ -420,8 +337,79 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="addBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="add"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="clrBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="clear"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="clrBtnMouseEntered"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clrBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="0" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="TIME"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="LocalTime currentTime = LocalTime.now();&#xa;&#xa;// Format the time as &quot;hh:mm:ss a&quot;&#xa;DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(&quot;hh:mm:ss a&quot;);&#xa;String formattedTime = currentTime.format(timeFormatter);&#xa;&#xa;// Set the formatted time as the text for jLabel1&#xa;jLabel1.setText(formattedTime);&#xa;&#xa;// Set the font style, size, and color to resemble typewriter text&#xa;Font labelFont = new Font(Font.MONOSPACED, Font.BOLD, 22);&#xa;jLabel1.setFont(labelFont);&#xa;&#xa;// Make the JLabel opaque&#xa;jLabel1.setOpaque(true);&#xa;&#xa;// Enable tooltips for jLabel1&#xa;ToolTipManager.sharedInstance().registerComponent(jLabel1);&#xa;&#xa;// Set a tooltip with the full time&#xa;jLabel1.setToolTipText(currentTime.toString());&#xa;&#xa;// Create a timer to update the time every second&#xa;Timer timer = new Timer(1000, new ActionListener() {&#xa;    @Override&#xa;    public void actionPerformed(ActionEvent e) {&#xa;        LocalTime updatedTime = LocalTime.now();&#xa;        String updatedFormattedTime = updatedTime.format(timeFormatter);&#xa;        jLabel1.setText(updatedFormattedTime);&#xa;    }&#xa;});&#xa;&#xa;// Start the timer&#xa;timer.start();"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\andre\OneDrive\Desktop\ICONS\fillout.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="jLabel2"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="60" width="960" height="560"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\andre\OneDrive\Desktop\ICONS\header.png"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="670" y="0" width="290" height="70"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\andre\OneDrive\Desktop\ICONS\tech.png"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="10" width="310" height="60"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
