@@ -1,15 +1,25 @@
-package model;
+    package model;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class UserModel {
-	private String donorLastName="", donorFirstName="", phoneNumber="", email="", address="", donationCateg="";
-	private LocalDate donationDate;
-	private double donationAmount = 0;
+    private String donorLastName="", donorFirstName="", dPhoneNumber="", dEmail="", address="", donationCateg="";
+    private LocalDate donationDate;
+    private double donationAmount = 0;
+        
+        
+
 	private ArrayList<Transaction> transactions = new ArrayList<>();
 	private Stack<Double> donationAmountStack = new Stack<Double>();
+        
+
+        
+
 	
 	public Stack<Double> getStack() {
 		return donationAmountStack;
@@ -71,18 +81,18 @@ public class UserModel {
 	}
 	
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return dPhoneNumber;
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		this.dPhoneNumber = phoneNumber;
 	}
 
 	public String getEmail() {
-		return email;
+		return dEmail;
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		this.dEmail = email;
 	}
 
     
@@ -103,5 +113,13 @@ public class UserModel {
 	public void setDonationCateg(String donationType) {
 		this.donationCateg = donationType;
 	}
+        
+        
+        
+        
+        ////////////////////////////////
+        
+
+        // Getter and Setter for brgy
 
 }

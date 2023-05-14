@@ -6,18 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JTextArea;
 import javax.swing.Timer;
 import javax.swing.ToolTipManager;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GraphicsEnvironment;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.SwingConstants;
 import java.text.DecimalFormat;
 import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,6 +29,8 @@ import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.UserModel;
+import static view.PesoRenderer.totalDonationAmount;
 
 // Custom cell renderer for adding the peso sign and comma separator
 class PesoRenderer extends DefaultTableCellRenderer {
@@ -40,6 +39,7 @@ class PesoRenderer extends DefaultTableCellRenderer {
     public PesoRenderer() {
         super();
     }
+public static double totalDonationAmount = 0.0;
 
     @Override
     protected void setValue(Object value) {
@@ -141,18 +141,9 @@ private String formatDonationAmount(double amount) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-   public TableView() {
+private UserModel model;
+   public TableView(UserModel model) {
+       this.model=model;
         initComponents();
         // Center the frame on the screen
         getContentPane().requestFocusInWindow();
@@ -198,6 +189,7 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
     private void fillFieldsFromTable() {
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
+        
             String firstName = jTable1.getValueAt(selectedRow, 0).toString();
             String lastName = jTable1.getValueAt(selectedRow, 1).toString();
             String phoneNumber = jTable1.getValueAt(selectedRow, 2).toString();
@@ -221,6 +213,15 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
             donationTypeCb.setSelectedItem(donationCategory);
             donationAmtTB.setForeground(Color.BLACK);
             donationAmtTB.setText(donationAmount);
+            
+            
+            //Total
+    // Update the total donation amount
+    totalDonationAmount += getDonationAmount();
+
+    // Update the "Total" text field
+    Total.setText("Total Donation: ₱" + formatDonationAmount(totalDonationAmount));
+
         }
     
     
@@ -243,31 +244,7 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
     // Validate fields
     StringBuilder missingFieldsBuilder = new StringBuilder();
     StringBuilder invalidFieldsBuilder = new StringBuilder();
-// Check for duplications
-    boolean isDuplicate = false;
-    Node current = head;
-    while (current != null) {
-        DonationEntry existingEntry = current.entry;
-        if (existingEntry.firstName.equals(firstName) &&
-                existingEntry.lastName.equals(lastName) &&
-                existingEntry.phoneNumber.equals(phoneNumber) &&
-                existingEntry.email.equals(email) &&
-                existingEntry.address.equals(address) &&
-                existingEntry.donationCategory.equals(donationCategory) &&
-                existingEntry.donationAmount == donationAmount) {
-            isDuplicate = true;
-            break;
-        }
-        current = current.next;
-    }
 
-    if (isDuplicate) {
-        JOptionPane.showMessageDialog(this,
-                "DUPLICATE ENTRY. This entry already exists in the table.",
-                "Warning",
-                JOptionPane.WARNING_MESSAGE);
-        return;
-    }
     if (firstName.isEmpty() || firstName.equals("First Name")) {
         missingFieldsBuilder.append("- FIRST NAME\n");
     }
@@ -292,10 +269,9 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
         missingFieldsBuilder.append(" - DONATION CATEGORY\n");
     }
 
-     if (donationAmount <= 0 || String.valueOf(donationAmount).equals("Donation Amount")) {
+    if (donationAmount <= 0 || String.valueOf(donationAmount).equals("Donation Amount")) {
         missingFieldsBuilder.append(" - DONATION AMOUNT\n");
     }
-
 
     // Validate the fields using regular expressions
     if (!firstName.matches("[A-Za-z]+") || !lastName.matches("[A-Za-z]+")) {
@@ -320,7 +296,7 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
 
     if (missingFieldsBuilder.length() > 0 || invalidFieldsBuilder.length() > 0) {
         StringBuilder dialogMessageBuilder = new StringBuilder();
-        dialogMessageBuilder.append("<html><font size=\"7\"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp WARNING!&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></font></html>\n\n");
+        dialogMessageBuilder.append("<html><font size=\"7\"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp WARNING!&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></font></html>\n\n");
 
         if (invalidFieldsBuilder.length() > 0) {
             dialogMessageBuilder.append("INVALID FIELDS:\n\n");
@@ -337,7 +313,7 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
         Font boldFont = new Font(Font.DIALOG, Font.BOLD, 16);
 
         // Set the font for the message dialog
-        UIManager.put("OptionPane.messageFont", boldFont);
+                UIManager.put("OptionPane.messageFont", boldFont);
 
         // Show the message dialog with the warning message
         JOptionPane.showMessageDialog(this, dialogMessageBuilder.toString(), "Warning", JOptionPane.WARNING_MESSAGE);
@@ -345,6 +321,40 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
         // Don't add the entry if any field is invalid or empty
         return;
     }
+    
+    // Check for duplications
+    boolean isDuplicate = false;
+    Node current = head;
+    while (current != null) {
+        DonationEntry existingEntry = current.entry;
+        if (existingEntry.firstName.equals(firstName) &&
+                existingEntry.lastName.equals(lastName) &&
+                existingEntry.phoneNumber.equals(phoneNumber) &&
+                existingEntry.email.equals(email) &&
+                existingEntry.address.equals(address) &&
+                existingEntry.donationCategory.equals(donationCategory) &&
+                existingEntry.donationAmount == donationAmount) {
+            isDuplicate = true;
+            break;
+        }
+        current = current.next;
+    }
+
+    if (isDuplicate) {
+        JOptionPane.showMessageDialog(this,
+                "DUPLICATE ENTRY. This entry already exists in the table.",
+                "Warning",
+                JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Update the total donation amount
+    totalDonationAmount += donationAmount;
+
+    // Update the "Total" text field
+    Total.setText("₱" + formatDonationAmount(totalDonationAmount));
+
+
 
     DonationEntry entry = new DonationEntry(firstName, lastName, phoneNumber, email, address, donationCategory, donationAmount);
     entry.date = formattedDate;
@@ -429,7 +439,16 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
     public JButton getClearButton() {
         return this.clrBtn;
     }
-
+public double calculateTotalDonationAmount() {
+    double totalAmount = 0.0;
+    Node currentNode = head;
+    while (currentNode != null) {
+        DonationEntry currentEntry = currentNode.entry;
+        totalAmount += currentEntry.donationAmount;
+        currentNode = currentNode.next;
+    }
+    return totalAmount;
+}
 
     
     
@@ -454,6 +473,7 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
         donationTypeCb = new javax.swing.JComboBox<>();
         donationAmtTB = new javax.swing.JTextField();
         hAddressTextArea = new java.awt.TextArea();
+        Total = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -490,11 +510,6 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
         });
 
         lNameTb.setText("Last Name");
-        lNameTb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lNameTbActionPerformed(evt);
-            }
-        });
 
         pNumberTb.setText("Phone Number");
         pNumberTb.addActionListener(new java.awt.event.ActionListener() {
@@ -522,6 +537,14 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
             }
         });
 
+        Total.setEditable(false);
+        Total.setText("Email");
+        Total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TotalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -538,7 +561,8 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
                         .addComponent(lNameTb)
                         .addComponent(pNumberTb)
                         .addComponent(eMailTb)
-                        .addComponent(donationAmtTB, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
+                        .addComponent(donationAmtTB, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                        .addComponent(Total, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -558,7 +582,9 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
                 .addComponent(donationTypeCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(donationAmtTB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         fNameTb.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
@@ -739,6 +765,9 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
             }
         }
     });
+    Total.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+    Total.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+    Total.setText("Total Donation"); // set placeholder text
 
     jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 210, 490));
 
@@ -809,6 +838,8 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
 
     // Set the border of the table
     jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+    // INSERTION SORT
     // Create a row sorter for the table
     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTable1.getModel());
 
@@ -817,6 +848,32 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
 
     // Assign the row sorter to the table
     jTable1.setRowSorter(sorter);
+
+    // Perform insertion sort on the table rows
+    List<? extends RowSorter.SortKey> sortKeys = sorter.getSortKeys();
+    if (!sortKeys.isEmpty()) {
+        RowSorter.SortKey sortKey = sortKeys.get(0);
+        if (sortKey.getColumn() == 6 && sortKey.getSortOrder() == SortOrder.ASCENDING) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            int rowCount = model.getRowCount();
+            for (int i = 1; i < rowCount; i++) {
+                for (int j = i; j > 0; j--) {
+                    Object currentRowAmount = model.getValueAt(j, 6); // Assuming "Amount" column index is 6
+                    Object previousRowAmount = model.getValueAt(j - 1, 6);
+                    if (currentRowAmount instanceof Double && previousRowAmount instanceof Double) {
+                        double currentAmount = (Double) currentRowAmount;
+                        double previousAmount = (Double) previousRowAmount;
+                        if (currentAmount < previousAmount) {
+                            model.moveRow(j, j, j - 1);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Set the cell renderer to align data to the left and add the peso sign
     DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
     leftRenderer.setHorizontalAlignment(SwingConstants.LEFT);
@@ -972,26 +1029,6 @@ jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent event) 
 
     pack();
     }// </editor-fold>//GEN-END:initComponents
-private void sortEntriesAscending() {
-    try {
-        TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTable1.getModel());
-        jTable1.setRowSorter(sorter);
-
-        // Set custom comparator for the "Donation Amount" column
-        sorter.setComparator(jTable1.getColumn("Donation Amount").getModelIndex(), (o1, o2) -> {
-            Double value1 = parseDoubleValue(o1);
-            Double value2 = parseDoubleValue(o2);
-            return value1.compareTo(value2);
-        });
-
-        // Sort the table in ascending order based on the "Donation Amount" column
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));  // Assuming column 0 is the "Donation Amount" column
-        sorter.setSortKeys(sortKeys);
-    } catch (IllegalArgumentException e) {
-        System.err.println("Invalid SortKey: " + e.getMessage());
-    }
-}
 
 private Double parseDoubleValue(Object value) {
     if (value instanceof Double) {
@@ -1005,13 +1042,9 @@ private Double parseDoubleValue(Object value) {
 }
 
 
-    private void lNameTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameTbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lNameTbActionPerformed
-
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
          
-          HomeView home = new HomeView();
+          HomeView home = new HomeView(model);
         home.setVisible(true);
         home.pack();
         home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -1116,6 +1149,10 @@ if (!fNameTb.getText().isEmpty() || !lNameTb.getText().isEmpty() ||
     private void donationAmtTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donationAmtTBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_donationAmtTBActionPerformed
+
+    private void TotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TotalActionPerformed
     
     
 
@@ -1147,144 +1184,16 @@ if (!fNameTb.getText().isEmpty() || !lNameTb.getText().isEmpty() ||
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TableView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TableView().setVisible(true);
+                new TableView(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Total;
     private javax.swing.JButton addBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton clrBtn;

@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JFrame;
+import model.UserModel;
 
 /**
  *
@@ -14,8 +15,8 @@ public class SearchView extends javax.swing.JFrame {
 
     /**
      * Creates new form SearchView
-     */
-    public SearchView() {
+     */private UserModel model;
+    public SearchView(UserModel model) {
         initComponents();
          // Center the frame on the screen
         setLocationRelativeTo(null);
@@ -310,7 +311,7 @@ public class SearchView extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
         
-        TableView tableView = new TableView();
+        TableView tableView = new TableView(model);
         tableView.setVisible(true);
         tableView.pack();
         tableView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -319,7 +320,7 @@ public class SearchView extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-        HomeView home = new HomeView();
+        HomeView home = new HomeView(model);
         home.setVisible(true);
         home.pack();
         home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -328,7 +329,7 @@ public class SearchView extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        HomeView home = new HomeView();
+        HomeView home = new HomeView(model);
         home.setVisible(true);
         home.pack();
         home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -365,7 +366,7 @@ public class SearchView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SearchView().setVisible(true);
+                new SearchView(null).setVisible(true);
             }
         });
     }

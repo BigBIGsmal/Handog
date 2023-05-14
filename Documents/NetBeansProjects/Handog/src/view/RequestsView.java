@@ -1,28 +1,61 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package view;
 
+import control.RequestFunctionalities;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Queue;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
-
-/**
- *
- * @author admin
- */
+import javax.swing.table.TableColumn;
+import model.ReceiverModel;
+import model.Request;
+import model.UserModel;
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.List;
+import javax.swing.UIManager;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.regex.Matcher;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 public class RequestsView extends javax.swing.JFrame {
+    // Rest of your code...
+
+
 
     /**
      * Creates new form RequestsView
      */
-    public RequestsView() {
+    
+    private UserModel model;
+    public static ReceiverModel requester;
+    private Request request;
+    private DefaultTableModel tableModel;
+    public RequestsView(UserModel model, ReceiverModel requester) {
         initComponents();
-         // Center the frame on the screen
+        this.model = model;
+        this.requester = requester;
+          // Center the frame on the screen
         setLocationRelativeTo(null);
-        
+         getContentPane().requestFocusInWindow();
         // Set the frame to not be resizable
         setResizable(false);
-   
     }
 
     /**
@@ -34,176 +67,1172 @@ public class RequestsView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        statusButtons = new javax.swing.ButtonGroup();
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        fNameTb = new javax.swing.JTextField();
-        lNameTb = new javax.swing.JTextField();
-        pNumberTb = new javax.swing.JTextField();
-        eMailTb = new javax.swing.JTextField();
-        donationTypeCb = new javax.swing.JComboBox<>();
-        clrBtn = new javax.swing.JButton();
-        addBtn = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        nameBarangay = new javax.swing.JTextField();
+        nameCity = new javax.swing.JTextField();
+        requesterCntc = new javax.swing.JTextField();
+        donationReqType = new javax.swing.JComboBox<>();
+        requesterEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        eMailTb1 = new javax.swing.JTextField();
+        requestAmount = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        addBtn = new javax.swing.JButton();
+        declined = new javax.swing.JRadioButton();
+        accepted = new javax.swing.JRadioButton();
+        updateBtn = new javax.swing.JButton();
+        clrBtn = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        screening = new javax.swing.JRadioButton();
+        pending = new javax.swing.JRadioButton();
+        jPanel6 = new javax.swing.JPanel();
+        backLbl = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(251, 236, 254));
+        jPanel1.setName(""); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(1113, 561));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablePanel.setBackground(new java.awt.Color(153, 255, 255));
-        tablePanel.setLayout(new javax.swing.BoxLayout(tablePanel, javax.swing.BoxLayout.LINE_AXIS));
+        tablePanel.setBackground(new java.awt.Color(110,231, 242, 100));
+        tablePanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tablePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        String[] columnNames = {
+            "Barangay", "City", "Category", "Email", "Contact", "Amount", "Date", "Time", "Status"
+        };
 
-            },
-            new String [] {
-                "Barangay", "City", "Category", "Email", "Contact", "Date", "Duration", "Status"
+        Object[][] data = {
+            {null, null, null, null, null, null, null, null, null},
+            {null, null, null, null, null, null, null, null, null},
+            {null, null, null, null, null, null, null, null, null},
+            {null, null, null, null, null, null, null, null, null}
+        };
+
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        jTable1.setModel(model);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
-        ));
+        });
         jScrollPane1.setViewportView(jTable1);
+        // Set the background color of the table
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablePanel.add(jScrollPane1);
+        // Set the foreground color of the table
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel1.add(tablePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 550, 490));
+        // Set the font of the table
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11));
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        // Set the selection background color of the table
+        jTable1.setSelectionBackground(new java.awt.Color(255, 192, 203));
+
+        // Set the selection foreground color of the table
+        jTable1.setSelectionForeground(new java.awt.Color(0, 0, 0));
+
+        // Set the grid color of the table
+        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
+
+        // Set the row height of the table
+        jTable1.setRowHeight(30);
+
+        // Set the header font of the table
+        jTable1.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 11));
+
+        // Set the header background color of the table
+        jTable1.getTableHeader().setBackground(new java.awt.Color(255, 192, 203));
+
+        // Set the header foreground color of the table
+        jTable1.getTableHeader().setForeground(new java.awt.Color(0, 0, 0));
+
+        // Set the header row height of the table
+        jTable1.getTableHeader().setPreferredSize(new java.awt.Dimension(30, 40));
+
+        // Set the grid visibility of the table
+        jTable1.setShowGrid(true);
+
+        // Set the border of the table
+        jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        // Create a custom cell renderer for the amount column
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
+            NumberFormat formatter = new DecimalFormat("#,##0.000");
+
+            @Override
+            public void setValue(Object value) {
+                if (value != null) {
+                    // Format the amount with the currency symbol (Peso)
+                    double amount = Double.parseDouble(value.toString());
+                    String formattedValue = "₱" + formatter.format(amount);
+                    super.setValue(formattedValue);
+                    setHorizontalAlignment(SwingConstants.RIGHT);
+                } else {
+                    super.setValue(null);
+                }
+            }
+        };
+
+        // Set the custom cell renderer to the amount column
+        jTable1.getColumnModel().getColumn(5).setCellRenderer(renderer);
+
+        tablePanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 810, 460));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\andre\\OneDrive\\Desktop\\ICONS\\tech.png")); // NOI18N
+        tablePanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 310, 60));
+
+        jPanel1.add(tablePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 830, 530));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255, 150));
+        jPanel2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fNameTb.setText("Barangay");
-        fNameTb.addActionListener(new java.awt.event.ActionListener() {
+        nameBarangay.setText("Barangay");
+        nameBarangay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fNameTbActionPerformed(evt);
+                nameBarangayActionPerformed(evt);
             }
         });
-        jPanel2.add(fNameTb, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 20, 191, -1));
+        jPanel2.add(nameBarangay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, -1));
+        nameBarangay.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+        nameBarangay.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+        nameBarangay.setText("Barangay"); // set placeholder text
 
-        lNameTb.setText("City");
-        lNameTb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lNameTbActionPerformed(evt);
+        // Add FocusListener to remove placeholder text when field gains focus
+        nameBarangay.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (nameBarangay.getText().equals("Barangay")) {
+                    nameBarangay.setText("");
+                    nameBarangay.setForeground(java.awt.Color.BLACK); // set text color back to black
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (nameBarangay.getText().isEmpty()) {
+                    nameBarangay.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+                    nameBarangay.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+                    nameBarangay.setText("Barangay"); // set placeholder text
+                }
             }
         });
-        jPanel2.add(lNameTb, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 76, 191, -1));
 
-        pNumberTb.setText("Contact");
-        pNumberTb.addActionListener(new java.awt.event.ActionListener() {
+        // Add ActionListener to handle user input
+        nameBarangay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pNumberTbActionPerformed(evt);
+                nameBarangayActionPerformed(evt);
             }
         });
-        jPanel2.add(pNumberTb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 191, -1));
 
-        eMailTb.setText("Address");
-        eMailTb.addActionListener(new java.awt.event.ActionListener() {
+        nameCity.setText("City");
+        nameCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eMailTbActionPerformed(evt);
+                nameCityActionPerformed(evt);
             }
         });
-        jPanel2.add(eMailTb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 191, -1));
+        jPanel2.add(nameCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 200, -1));
+        nameCity.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+        nameCity.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+        nameCity.setText("City"); // set placeholder text
 
-        donationTypeCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        donationTypeCb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                donationTypeCbActionPerformed(evt);
+        // Add FocusListener to remove placeholder text when field gains focus
+        nameCity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (nameCity.getText().equals("City")) {
+                    nameCity.setText("");
+                    nameCity.setForeground(java.awt.Color.BLACK); // set text color back to black
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (nameCity.getText().isEmpty()) {
+                    nameCity.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+                    nameCity.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+                    nameCity.setText("City"); // set placeholder text
+                }
             }
         });
-        jPanel2.add(donationTypeCb, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 130, 206, -1));
 
-        clrBtn.setText("clear");
-        jPanel2.add(clrBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        // Add ActionListener to handle user input
+        nameCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameBarangayActionPerformed(evt);
+            }
+        });
 
-        addBtn.setText("add");
+        requesterCntc.setText("Contact");
+        requesterCntc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requesterCntcActionPerformed(evt);
+            }
+        });
+        jPanel2.add(requesterCntc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 200, -1));
+        requesterCntc.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+        requesterCntc.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+        requesterCntc.setText("Contact"); // set placeholder text
+
+        // Add FocusListener to remove placeholder text when field gains focus
+        requesterCntc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (requesterCntc.getText().equals("Contact")) {
+                    requesterCntc.setText("");
+                    requesterCntc.setForeground(java.awt.Color.BLACK); // set text color back to black
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (requesterCntc.getText().isEmpty()) {
+                    requesterCntc.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+                    requesterCntc.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+                    requesterCntc.setText("Contact"); // set placeholder text
+                }
+            }
+        });
+
+        // Add ActionListener to handle user input
+        requesterCntc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requesterCntcActionPerformed(evt);
+            }
+        });
+
+        donationReqType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Healthcare", "Food", "Material Goods", "Any" }));
+        donationReqType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                donationReqTypeActionPerformed(evt);
+            }
+        });
+        jPanel2.add(donationReqType, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 200, -1));
+        donationReqType.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        requesterEmail.setText("Email");
+        requesterEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requesterEmailActionPerformed(evt);
+            }
+        });
+        jPanel2.add(requesterEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, -1));
+        requesterEmail.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+        requesterEmail.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+        requesterEmail.setText("Email"); // set placeholder text
+
+        // Add FocusListener to remove placeholder text when field gains focus
+        requesterEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (requesterEmail.getText().equals("Email")) {
+                    requesterEmail.setText("");
+                    requesterEmail.setForeground(java.awt.Color.BLACK); // set text color back to black
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (requesterEmail.getText().isEmpty()) {
+                    requesterEmail.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+                    requesterEmail.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+                    requesterEmail.setText("Email"); // set placeholder text
+                }
+            }
+        });
+
+        // Add ActionListener to handle user input
+        requesterEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requesterEmailActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel1.setText("DONATIONS :");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 150, 20));
+
+        requestAmount.setText("Enter Amount");
+        requestAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestAmountActionPerformed(evt);
+            }
+        });
+        jPanel2.add(requestAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 200, -1));
+        requestAmount.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+        requestAmount.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+        requestAmount.setText("Enter Amount"); // set placeholder text
+
+        // Add FocusListener to remove placeholder text when field gains focus
+        requestAmount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (requestAmount.getText().equals("Enter Amount")) {
+                    requestAmount.setText("");
+                    requestAmount.setForeground(java.awt.Color.BLACK); // set text color back to black
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (requestAmount.getText().isEmpty()) {
+                    requestAmount.setForeground(new java.awt.Color(150,150,150)); // set placeholder text color
+                    requestAmount.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // set placeholder text font
+                    requestAmount.setText("Enter Amount"); // set placeholder text
+                }
+            }
+        });
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\andre\\OneDrive\\Desktop\\ICONS\\header.png")); // NOI18N
+        jLabel3.setText("HAHAHAH LAGYAN KO NG LABEL DITO");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 160, -1));
+
+        jPanel3.setBackground(new java.awt.Color(222, 222, 222));
+        jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
+        jPanel3.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 90, -1));
 
-        jRadioButton1.setText("Accepted");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        statusButtons.add(declined);
+        declined.setText("Declined");
+        declined.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                declinedActionPerformed(evt);
             }
         });
-        jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 90, -1));
+        jPanel3.add(declined, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
-        jRadioButton2.setText("Declined");
-        jPanel2.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 90, -1));
+        statusButtons.add(accepted);
+        accepted.setText("Accepted");
+        accepted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceptedActionPerformed(evt);
+            }
+        });
+        jPanel3.add(accepted, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 90, -1));
+
+        clrBtn.setText("Clear");
+        clrBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clrBtnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(clrBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 90, -1));
+
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 90, -1));
+
+        statusButtons.add(screening);
+        screening.setText("Screening");
+        screening.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                screeningActionPerformed(evt);
+            }
+        });
+        jPanel3.add(screening, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, -1));
+
+        statusButtons.add(pending);
+        pending.setText("Pending");
+        pending.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pendingActionPerformed(evt);
+            }
+        });
+        jPanel3.add(pending, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 470));
 
         jPanel6.setBackground(new java.awt.Color(247, 182, 219));
+        jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel6.setRequestFocusEnabled(false);
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 21, -1, -1));
 
-        jLabel1.setText("Back");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        backLbl.setFont(new java.awt.Font("Tahoma", 1, 14));
+        backLbl.setText("Back");
+        backLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                backLblMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backLblMouseExited(evt);
             }
         });
-        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 210, 40));
+        jPanel6.add(backLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 200, 50));
+        backLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backLbl.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 16)); // increase font size to 16
+                jPanel6.setBackground(new Color(220, 20, 60)); // Set hover background color (dark pink)
+                jPanel6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Set cursor to hand
+            }
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 230, 40));
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backLbl.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 14)); // reset font size to 12
+                jPanel6.setBackground(new Color(255, 192, 203)); // Restore initial background color on exit (pink)
+                jPanel6.setCursor(Cursor.getDefaultCursor()); // Restore default cursor
+            }
+        });
 
-        eMailTb1.setText("Email");
-        jPanel2.add(eMailTb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 192, 191, -1));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 220, 40));
+        jPanel6.setBackground(new Color(255, 192, 203)); // Set initial background color (pink)
+        jPanel6.setOpaque(true);
+        // Set border radius
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 490));
+        // Set the hover effect
+        jPanel6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                jPanel6.setBackground(new Color(220, 20, 60)); // Set hover background color (dark pink)
+                jPanel6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                backLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseEntered(java.awt.event.MouseEvent evt) {
+
+                    }
+                });
+                // Set cursor to hand
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                jPanel6.setBackground(new Color(255, 192, 203)); // Restore initial background color on exit (pink)
+                jPanel6.setCursor(Cursor.getDefaultCursor()); // Restore default cursor
+            }
+        });
+
+        // Add jPanel6 to jPanel1 with absolute positioning
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 220, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\andre\\OneDrive\\Desktop\\ICONS\\bgR.png")); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 560));
 
         getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lNameTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameTbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lNameTbActionPerformed
+     public boolean verifyInput(){
+       StringBuilder errorMessage = new StringBuilder();
 
-    private void fNameTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameTbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fNameTbActionPerformed
+String barangay = nameBarangay.getText();
+Pattern barangayPattern = Pattern.compile("^[A-Z][A-Za-z0-9 ]*$");
+Matcher barangayMatcher = barangayPattern.matcher(barangay);
+if (!barangayMatcher.matches()) {
+    errorMessage.append("Invalid Barangay. Please use alphabetic characters only, starting with a capital letter. It can include numbers and spaces.\n");
+}
 
-    private void donationTypeCbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donationTypeCbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_donationTypeCbActionPerformed
+// Verify nameCity
+String city = nameCity.getText();
+Pattern cityPattern = Pattern.compile("^[A-Z][A-Za-z0-9 ]*$");
+Matcher cityMatcher = cityPattern.matcher(city);
+if (!cityMatcher.matches()) {
+    errorMessage.append("Invalid City. Please use alphabetic characters only, starting with a capital letter. It can include numbers and spaces.\n");
+}
 
-    private void pNumberTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pNumberTbActionPerformed
+// Verify requestAmount
+if ("Amount".equals(requestAmount.getText())) {
+    errorMessage.append("Please enter a value for Amount.\n");
+}
+
+// Verify requesterCntc (phone number)
+String cntcPattern = "\\d{11}"; // Assumes 10-digit phone number format
+if (!Pattern.matches(cntcPattern, requesterCntc.getText())) {
+    errorMessage.append("Please enter a valid phone number for requesterCntc.\n");
+}
+
+// Verify requesterEmail
+String emailPattern = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b";
+if (!Pattern.matches(emailPattern, requesterEmail.getText())) {
+    errorMessage.append("Please enter a valid email address for requesterEmail.\n");
+}
+
+// Display error message if any fields are invalid
+if (errorMessage.length() > 0) {
+    StringBuilder dialogMessageBuilder = new StringBuilder();
+    dialogMessageBuilder.append("<html><font size=\"7\"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp WARNING!&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></font></html>\n\n");
+    dialogMessageBuilder.append(errorMessage);
+
+    // Create a bold font
+    Font boldFont = new Font(Font.DIALOG, Font.BOLD, 16);
+
+    // Set the font for the message dialog
+    UIManager.put("OptionPane.messageFont", boldFont);
+
+    // Show the message dialog with the warning message
+    JOptionPane.showMessageDialog(null, dialogMessageBuilder.toString(), "Warning", JOptionPane.WARNING_MESSAGE);
+
+    return false;
+}
+
+// All inputs are valid
+return true;
+     
+     }
+
+        private void setReceiverInfo() {
+    int selectedRowIndex = jTable1.getSelectedRow();
+    if (selectedRowIndex != -1) {
+        String originalStatus = jTable1.getValueAt(selectedRowIndex, 8).toString();
+        
+       requester.setBrgy(nameBarangay.getText());
+            requester.setCity(nameCity.getText()); 
+            //make a method that generates a duration for its schedule for screening
+
+           requester.setTime(LocalTime.now());
+           requester.setRCategory(donationReqType.getSelectedItem().toString());
+           requester.setREmail(requesterEmail.getText());
+           requester.setRContactNum(requesterCntc.getText());
+           requester.setRAmount(Double.parseDouble(requestAmount.getText()));
+           requester.setReqDate(LocalDate.now());
+        
+        String newStatus = ""; // Variable to hold the new status
+        
+        // Determine the new status based on the selected radio button
+        if (screening.isSelected()) {
+            newStatus = "Screening";
+        } else if (declined.isSelected()) {
+            newStatus = "Declined";
+        } else if (pending.isSelected()) {
+            newStatus = "Pending";
+        } else if (accepted.isSelected()) {
+            newStatus = "Accepted";
+        }
+        
+        // Update the status in the table model
+        jTable1.setValueAt(newStatus, selectedRowIndex, 8);
+        
+        // Update the status in the requester object
+        requester.setStatus(newStatus);
+        
+        // Update the text file
+        updateTextFileStatus(originalStatus, newStatus);
+        
+        System.out.println("Receiver information updated successfully.");
+    }
+         requester.setBrgy(nameBarangay.getText());
+            requester.setCity(nameCity.getText()); 
+            //make a method that generates a duration for its schedule for screening
+
+           requester.setTime(LocalTime.now());
+           requester.setRCategory(donationReqType.getSelectedItem().toString());
+           requester.setREmail(requesterEmail.getText());
+           requester.setRContactNum(requesterCntc.getText());
+           requester.setRAmount(Double.parseDouble(requestAmount.getText()));
+           requester.setReqDate(LocalDate.now());
+}
+        
+private void updateTextFileStatus(String originalStatus, String newStatus) {
+    try {
+        File inputFile = new File("dis.txt");
+        File tempFile = new File("temp.txt");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             PrintWriter writer = new PrintWriter(new FileWriter(tempFile))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] fields = line.split(",");
+                String status = fields[8];
+
+                if (status.equals(originalStatus)) {
+                    fields[8] = newStatus;
+                    line = String.join(",", fields);
+                }
+
+                writer.println(line);
+            }
+        }
+
+        if (!inputFile.delete()) {
+            System.out.println("Error deleting the original file.");
+            return;
+        }
+
+        if (!tempFile.renameTo(inputFile)) {
+            System.out.println("Error renaming the temporary file.");
+            return;
+        }
+
+        System.out.println("Text file updated successfully.");
+    } catch (IOException e) {
+        System.out.println("An error occurred while updating dis.txt: " + e.getMessage());
+    }
+}
+
+
+
+
+
+
+public static void writeToTextFile(ReceiverModel requester) {
+    String barangay = requester.getBrgy();
+    String city = requester.getCity();
+    String rCateg = requester.getRCategory();
+    String email = requester.getREmail();
+    String contact = requester.getRContactNum();
+    double donationAmount = requester.getRAmount();
+    LocalDate reqDate = requester.getReqDate();
+    LocalTime reqTime = requester.getTime();
+    String reqStatus = requester.getStatus();
+
+    try (FileWriter writer = new FileWriter("dis.txt", true);
+         BufferedWriter bufferedWriter = new BufferedWriter(writer);
+         PrintWriter printWriter = new PrintWriter(bufferedWriter)) {
+        // Append the new data to the file
+        printWriter.println(barangay + "," + city + "," + rCateg + "," + email + "," + contact + "," + donationAmount + "," + reqDate + "," + reqTime + "," + reqStatus);
+    } catch (IOException e) {
+        System.out.println("An error occurred while writing to the file: " + e.getMessage());
+    }
+}
+
+
+
+            private void readRequests(){
+                try (BufferedReader br = new BufferedReader(new FileReader("dis.txt"))) {
+
+               String line;
+               while ((line = br.readLine()) != null) {
+                   String[] fields = line.split(",");
+                   String barangay = fields[0];
+                   String city = fields[1];
+                   String category = fields[2];
+                   String email = fields[3];
+                   String contact = fields[4];
+                   String amount = String.valueOf(fields[5]);
+                   String date = fields[6];
+                   String time = fields[7];
+                   String status = fields[8];
+
+          request = new Request(barangay, city, category, email, contact, Double.parseDouble(amount), date, time, status);
+
+                   requester.addRequest(request);
+               }
+           } catch (IOException e) {
+           }
+
+                        updateTable(requester.getRequests());
+            }
+
+
+       private Object[][] getTableData(Queue<Request> requests) {
+       Object[][] data = new Object[requester.getRequests().size()][9];
+
+       int i = 0;
+       for (Request r : requester.getRequests()) {
+           data[i][0] = r.getBarangay();
+           data[i][1] = r.getCity();
+           data[i][2] = r.getCategory();
+           data[i][3] = r.getEmail();
+           data[i][4] = r.getContactNum();
+           data[i][5] = r.getAmount();
+           data[i][6] = r.getDate();
+           data[i][7] = r.getTime();
+           data[i][8] = r.getStatus();
+           i++;
+       }
+
+       return data;
+   }
+       
+       
+           
+public String[] getColumnNames() {
+    return new String[]{"Barangay", "City", "Category", "Email", "Contact", "Amount", "Date", "Time", "Status"};
+}
+
+
+public void updateTable(Queue<Request> requests) {
+    DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+    tableModel.setRowCount(0); // Clear existing data
+
+    Object[][] data = getTableData(requests);
+    String[] columnNames = getColumnNames();
+    tableModel.setDataVector(data, columnNames);
+
+    // Apply custom cell renderer to column with status
+    TableColumn statusColumn = jTable1.getColumnModel().getColumn(8); // Assuming status is at column index 8
+    statusColumn.setCellRenderer(new RequestFunctionalities.StatusCellRenderer());
+}
+
+private void removeAcceptedRows(JTable table) {
+    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+    int rowCount = tableModel.getRowCount();
+
+    try (PrintWriter writer = new PrintWriter("passed.txt");
+         PrintWriter disWriter = new PrintWriter("dis.txt")) {
+
+        // Write the table contents to "dis.txt" before removing any rows
+        for (int i = 0; i < rowCount; i++) {
+            String barangay = (String) tableModel.getValueAt(i, 0);
+            String city = (String) tableModel.getValueAt(i, 1);
+            String category = (String) tableModel.getValueAt(i, 2);
+            String email = (String) tableModel.getValueAt(i, 3);
+            String contactNum = (String) tableModel.getValueAt(i, 4);
+            double amount = (double) tableModel.getValueAt(i, 5);
+            String date = (String) tableModel.getValueAt(i, 6);
+            String time = (String) tableModel.getValueAt(i, 7);
+            String status = (String) tableModel.getValueAt(i, 8);
+
+            Request request = new Request(barangay, city, category, email, contactNum, amount, date, time, status);
+            disWriter.println(request.getBarangay() + "," + request.getCity() + "," + request.getCategory() + "," +
+                    request.getEmail() + "," + request.getContactNum() + "," + request.getAmount() + "," +
+                    request.getDate() + "," + request.getTime() + "," + request.getStatus());
+        }
+
+        // Remove accepted rows and write them to "passed.txt"
+        for (int i = rowCount - 1; i >= 0; i--) {
+            String status = (String) tableModel.getValueAt(i, 8);
+            if (status.equals("Accepted")) {
+                String barangay = (String) tableModel.getValueAt(i, 0);
+                String city = (String) tableModel.getValueAt(i, 1);
+                String category = (String) tableModel.getValueAt(i, 2);
+                String email = (String) tableModel.getValueAt(i, 3);
+                String contactNum = (String) tableModel.getValueAt(i, 4);
+                double amount = (double) tableModel.getValueAt(i, 5);
+                String date = (String) tableModel.getValueAt(i, 6);
+                String time = (String) tableModel.getValueAt(i, 7);
+                status = (String) tableModel.getValueAt(i, 8);
+
+                Request request = new Request(barangay, city, category, email, contactNum, amount, date, time, status);
+                writer.println(request.getBarangay() + "," + request.getCity() + "," + request.getCategory() + "," +
+                        request.getEmail() + "," + request.getContactNum() + "," + request.getAmount() + "," +
+                        request.getDate() + "," + request.getTime() + "," + request.getStatus());
+
+                tableModel.removeRow(i);
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("An error occurred while writing to the file: " + e.getMessage());
+    }
+}
+
+
+private void writeTableToTextFile(JTable table) {
+    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+    int rowCount = tableModel.getRowCount();
+
+    try (PrintWriter writer = new PrintWriter("dis.txt")) {
+        for (int i = 0; i < rowCount; i++) {
+            String barangay = (String) tableModel.getValueAt(i, 0);
+            String city = (String) tableModel.getValueAt(i, 1);
+            String category = (String) tableModel.getValueAt(i, 2);
+            String email = (String) tableModel.getValueAt(i, 3);
+            String contactNum = (String) tableModel.getValueAt(i, 4);
+            double amount = (double) tableModel.getValueAt(i, 5);
+            String date = (String) tableModel.getValueAt(i, 6);
+            String time = (String) tableModel.getValueAt(i, 7);
+            String status = (String) tableModel.getValueAt(i, 8);
+
+            writer.print(barangay + ",");
+            writer.print(city + ",");
+            writer.print(category + ",");
+            writer.print(email + ",");
+            writer.print(contactNum + ",");
+            writer.print(amount + ",");
+            writer.print(date + ",");
+            writer.print(time + ",");
+            writer.print(status);
+
+            writer.println();
+        }
+    } catch (IOException e) {
+        System.out.println("An error occurred while writing to the file: " + e.getMessage());
+    }
+}
+
+     
+    private void nameCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameCityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pNumberTbActionPerformed
+    }//GEN-LAST:event_nameCityActionPerformed
+
+    private void nameBarangayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameBarangayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameBarangayActionPerformed
+
+    private void donationReqTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donationReqTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_donationReqTypeActionPerformed
+
+    private void requesterCntcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requesterCntcActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_requesterCntcActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
+ if (verifyInput()) {
+        String inputBarangay = nameBarangay.getText();
+        boolean duplicateRequestExists = false;
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            setReceiverInfo();
+
+            String barangay = (String) tableModel.getValueAt(i, 0);
+            String status = (String) tableModel.getValueAt(i, 8);
+
+            if (barangay != null && barangay.equalsIgnoreCase(inputBarangay) && !status.equals("Declined")) {
+                duplicateRequestExists = true;
+                break;
+            }
+        }
+
+        if (duplicateRequestExists) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "A request from the same barangay already exists. Please delete the existing request to create a new one.",
+                    "Duplicate Request",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        } else {
+            // Input is valid and no duplicate request exists, proceed with further actions
+            requester.getRequests().clear();
+            setReceiverInfo();
+            writeToTextFile(requester);
+            readRequests();
+        }
+    } else {
+        // Input is not valid, handle the error or prompt the user to correct the input
+    }
     }//GEN-LAST:event_addBtnActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void requestAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestAmountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_requestAmountActionPerformed
 
-    private void eMailTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eMailTbActionPerformed
+    private void requesterEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requesterEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_eMailTbActionPerformed
+    }//GEN-LAST:event_requesterEmailActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void pendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendingActionPerformed
         // TODO add your handling code here:
-        
-        HomeView home = new HomeView();
+        requester.setStatus("Pending");
+    }//GEN-LAST:event_pendingActionPerformed
+
+    private void screeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_screeningActionPerformed
+        // TODO add your handling code here:
+        requester.setStatus("Screening");
+    }//GEN-LAST:event_screeningActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int i = jTable1.getSelectedRow();
+        nameBarangay.setText(jTable1.getValueAt(i, 0).toString());
+        nameCity.setText(jTable1.getValueAt(i, 1).toString());
+        donationReqType.setSelectedItem(jTable1.getValueAt(i, 2).toString());
+        requesterEmail.setText(jTable1.getValueAt(i, 3).toString());
+        requesterCntc.setText(jTable1.getValueAt(i, 4).toString());
+        requestAmount.setText(jTable1.getValueAt(i, 5).toString());
+
+        if (i != -1) {
+            String status = jTable1.getValueAt(i, 8).toString();
+
+            switch (status) {
+                case "Screening":
+                // Select the corresponding radio button for Screening
+                screening.setSelected(true);
+                break;
+                case "Declined":
+                // Select the corresponding radio button for Declined
+                declined.setSelected(true);
+                break;
+                case "Pending":
+                // Select the corresponding radio button for Pending
+                pending.setSelected(true);
+                break;
+                case "Accepted":
+                // Select the corresponding radio button for Accepted
+                accepted.setSelected(true);
+                break;
+                default:
+                // Handle unknown status value
+                break;
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void backLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLblMouseExited
+
+    }//GEN-LAST:event_backLblMouseExited
+
+    private void backLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLblMouseEntered
+
+    }//GEN-LAST:event_backLblMouseEntered
+
+    private void backLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLblMouseClicked
+        // TODO add your handling code here:
+
+        HomeView home = new HomeView(model);
         home.setVisible(true);
         home.pack();
         home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_backLblMouseClicked
+
+    private void clrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clrBtnActionPerformed
+        // Check if any of the fields have non-empty values
+if (!nameBarangay.getText().isEmpty() || !nameCity.getText().isEmpty() ||
+    !donationReqType.getSelectedItem().equals("Select") || !requesterEmail.getText().isEmpty() ||
+    !requesterCntc.getText().isEmpty() || !requestAmount.getText().isEmpty()) {
+
+    // Show a confirmation dialog
+    int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the fields?", "Clear Fields", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        // Clear the field text
+        nameBarangay.setText("");
+        nameCity.setText("");
+        donationReqType.setSelectedIndex(0);
+        requesterEmail.setText("");
+        requesterCntc.setText("");
+        requestAmount.setText("");
+
+        // Set the placeholder text for nameBarangay field
+        nameBarangay.setForeground(new java.awt.Color(150, 150, 150)); // Placeholder text color
+        nameBarangay.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // Placeholder text font
+        nameBarangay.setText("Barangay"); // Placeholder text
+
+        // Set the placeholder text for nameCity field
+        nameCity.setForeground(new java.awt.Color(150, 150, 150)); // Placeholder text color
+        nameCity.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // Placeholder text font
+        nameCity.setText("City"); // Placeholder text
+
+        // Set the placeholder text for requestAmount field
+        requestAmount.setForeground(new java.awt.Color(150, 150, 150)); // Placeholder text color
+        requestAmount.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // Placeholder text font
+        requestAmount.setText("Enter Amount"); // Placeholder text
+
+        // Set the placeholder text for requesterCntc field
+        requesterCntc.setForeground(new java.awt.Color(150, 150, 150)); // Placeholder text color
+        requesterCntc.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // Placeholder text font
+        requesterCntc.setText("Contact"); // Placeholder text
+
+        // Set the placeholder text for requesterEmail field
+        requesterEmail.setForeground(new java.awt.Color(150, 150, 150)); // Placeholder text color
+        requesterEmail.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14)); // Placeholder text font
+        requesterEmail.setText("Email"); // Placeholder text
+
+        // Refresh the table
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+
+        // Clear the selection
+        jTable1.clearSelection();
+    }
+}
+    }//GEN-LAST:event_clrBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+try {
+    File file = new File("dis.txt");
+    FileWriter writer = new FileWriter(file);
+    try (BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
+        List<Request> requests = (List<Request>) requester.getRequests();
+        for (Request request : requests) {
+            bufferedWriter.write(request.getBarangay() + "," +
+                    request.getCity() + "," +
+                    request.getCategory() + "," +
+                    request.getEmail() + "," +
+                    request.getContactNum() + "," +
+                    request.getAmount() + "," +
+                    request.getStatus());
+            bufferedWriter.newLine();
+        }
+    } // Close the BufferedWriter
+
+    System.out.println("dis.txt updated successfully.");
+} catch (IOException ex) {
+    System.out.println("An error occurred while updating dis.txt: " + ex.getMessage());
+}
+
+int selectedRowIndex = jTable1.getSelectedRow();
+if (selectedRowIndex != -1) {
+    String originalStatus = jTable1.getValueAt(selectedRowIndex, 8).toString();
+
+
+    // Get the updated values from the input fields
+    String updatedBarangay = nameBarangay.getText();
+    String updatedCity = nameCity.getText();
+    String updatedCategory = donationReqType.getSelectedItem().toString();
+    String updatedEmail = requesterEmail.getText();
+    String updatedContact = requesterCntc.getText();
+    String updatedAmountString = requestAmount.getText();
+
+    // Validate fields
+    StringBuilder missingFieldsBuilder = new StringBuilder();
+    StringBuilder invalidFieldsBuilder = new StringBuilder();
+
+    if (updatedBarangay.isEmpty() || updatedBarangay.equals("Barangay")) {
+        missingFieldsBuilder.append("- Barangay\n");
+    }
+
+    if (updatedCity.isEmpty() || updatedCity.equals("City")) {
+        missingFieldsBuilder.append("- City\n");
+    }
+
+    if (updatedCategory.isEmpty() || updatedCategory.equals("Donation Category")) {
+        missingFieldsBuilder.append("- Donation Category\n");
+    }
+
+    if (updatedEmail.isEmpty() || updatedEmail.equals("Email")) {
+        missingFieldsBuilder.append("- Email\n");
+    }
+
+    if (updatedContact.isEmpty() || updatedContact.equals("Contact")) {
+        missingFieldsBuilder.append("- Contact\n");
+    }
+
+    if (updatedAmountString.isEmpty() || updatedAmountString.equals("Amount")) {
+        missingFieldsBuilder.append("- Amount\n");
+    }
+
+    // Validate the fields using regular expressions
+    if (!updatedBarangay.matches("[A-Z][A-Za-z0-9 ]*")) {
+        invalidFieldsBuilder.append("- Invalid Barangay. Please use alphabetic characters only, starting with a capital letter. It can include numbers and two spaces.\n");
+    }
+
+    if (!updatedCity.matches("[A-Z][A-Za-z0-9 ]*")) {
+        invalidFieldsBuilder.append("- Invalid City. Please use alphabetic characters only, starting with a capital letter. It can include numbers and two spaces.\n");
+    }
+
+    if (!updatedContact.matches("\\d{11}")) {
+        invalidFieldsBuilder.append("- Invalid Contact. Please enter 11 digits.\n");
+    }
+
+    if (!updatedEmail.matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")) {
+        invalidFieldsBuilder.append("- Invalid Email Address.\n");
+    }
+
+    double updatedAmount = 0;
+    try {
+        updatedAmount = Double.parseDouble(updatedAmountString);
+        if (updatedAmount <= 0) {
+            invalidFieldsBuilder.append("- Invalid Amount. Please enter a positive value.\n");
+        }
+    } catch (NumberFormatException e) {
+        invalidFieldsBuilder.append("- Invalid Amount. Please enter a valid numeric value.\n");
+    }
+
+     if (missingFieldsBuilder.length() > 0 || invalidFieldsBuilder.length() > 0) {
+        StringBuilder dialogMessageBuilder = new StringBuilder();
+        dialogMessageBuilder.append("<html><font size=\"7\"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp WARNING!&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></font></html>\n\n");
+        if (invalidFieldsBuilder.length() > 0) {
+            dialogMessageBuilder.append("INVALID FIELDS:\n\n");
+            dialogMessageBuilder.append(invalidFieldsBuilder);
+            dialogMessageBuilder.append("\n");
+        }
+        if (missingFieldsBuilder.length() > 0) {
+            dialogMessageBuilder.append("MISSING FIELDS:\n\n");
+            dialogMessageBuilder.append(missingFieldsBuilder);
+        }
+
+        // Create a bold font
+        Font boldFont = new Font(Font.DIALOG, Font.BOLD, 16);
+
+        // Set the font for the message dialog
+        UIManager.put("OptionPane.messageFont", boldFont);
+
+        // Show the message dialog with the warning message
+        JOptionPane.showMessageDialog(this, dialogMessageBuilder.toString(), "Warning", JOptionPane.WARNING_MESSAGE);
+
+        // Don't proceed with the update if any field is invalid or empty
+        return;
+    }
+
+   // Update the values in the table model
+    jTable1.setValueAt(updatedBarangay, selectedRowIndex, 0);
+    jTable1.setValueAt(updatedCity, selectedRowIndex, 1);
+    jTable1.setValueAt(updatedCategory, selectedRowIndex, 2);
+    jTable1.setValueAt(updatedEmail, selectedRowIndex, 3);
+    jTable1.setValueAt(updatedContact, selectedRowIndex, 4);
+    jTable1.setValueAt(updatedAmountString, selectedRowIndex, 5);
+
+    // Update the values in the requester object
+    List<Request> requests = (List<Request>) requester.getRequests();
+    Request request = requests.get(selectedRowIndex);
+    request.setBarangay(updatedBarangay);
+    request.setCity(updatedCity);
+    request.setCategory(updatedCategory);
+    request.setEmail(updatedEmail);
+    request.setContactNum(updatedContact);
+    request.setAmount(Double.parseDouble(updatedAmountString));
+
+    // Update the text file
+    updateTextFileStatus(originalStatus, request.getStatus());
+
+    // Update the status in the table
+   String newStatus = "";
+if (screening.isSelected()) {
+    newStatus = "Screening";
+} else if (declined.isSelected()) {
+    newStatus = "Declined";
+} else if (pending.isSelected()) {
+    newStatus = "Pending";
+} else if (accepted.isSelected()) {
+    newStatus = "Accepted";
+}
+
+jTable1.setValueAt(newStatus, selectedRowIndex, 8);
+} else {
+    // No row selected, handle the error or prompt the user to select a row
+    // For example, display a message dialog
+    JOptionPane.showMessageDialog(this, "Please select a row to update.");
+}
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void declinedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declinedActionPerformed
+        // TODO add your handling code here:
+        requester.setStatus("Declined");
+    }//GEN-LAST:event_declinedActionPerformed
+
+    private void acceptedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptedActionPerformed
+        // TODO add your handling code here:
+        requester.setStatus("Accepted");
+    }//GEN-LAST:event_acceptedActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+ int selectedRowIndex = jTable1.getSelectedRow();
+if (selectedRowIndex != -1) {
+    int confirmation = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this request?", "Confirmation", JOptionPane.YES_NO_OPTION);
+    if (confirmation == JOptionPane.YES_OPTION) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.removeRow(selectedRowIndex);
+        requester.getRequests().remove(selectedRowIndex);
+
+        // Update the text file
+        writeTableToTextFile(jTable1);
+
+        System.out.println("Request deleted successfully.");
+    }
+} else {
+    JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+}
+
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+
+   
 
     /**
      * @param args the command line arguments
@@ -219,6 +1248,7 @@ public class RequestsView extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+                
                 }
             }
         } catch (ClassNotFoundException ex) {
@@ -231,35 +1261,58 @@ public class RequestsView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RequestsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
-                new RequestsView().setVisible(true);
+                
+                new RequestsView(null,null).setVisible(true);
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton accepted;
     private javax.swing.JButton addBtn;
+    private javax.swing.JLabel backLbl;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton clrBtn;
-    private javax.swing.JComboBox<String> donationTypeCb;
-    private javax.swing.JTextField eMailTb;
-    private javax.swing.JTextField eMailTb1;
-    private javax.swing.JTextField fNameTb;
+    private javax.swing.JRadioButton declined;
+    private javax.swing.JComboBox<String> donationReqType;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField lNameTb;
-    private javax.swing.JTextField pNumberTb;
+    private javax.swing.JTextField nameBarangay;
+    private javax.swing.JTextField nameCity;
+    private javax.swing.JRadioButton pending;
+    private javax.swing.JTextField requestAmount;
+    private javax.swing.JTextField requesterCntc;
+    private javax.swing.JTextField requesterEmail;
+    private javax.swing.JRadioButton screening;
+    private javax.swing.ButtonGroup statusButtons;
     private javax.swing.JPanel tablePanel;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
+
+    private static class Requester {
+
+        public Requester() {
+        }
+
+        private List<Request> getRequests() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    }
 }

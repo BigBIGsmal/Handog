@@ -4,7 +4,14 @@
  */
 package view;
 
+import java.awt.Color;
 import javax.swing.JFrame;
+import model.ReceiverModel;
+import model.UserModel;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -15,15 +22,23 @@ public class HomeView extends javax.swing.JFrame {
     /**
      * Creates new form HomeView
      */
-    public HomeView() {
+    private UserModel model;
+    
+//        public HomeView(UserModel model){
+//        this.model=model;
+//    }
+        
+    public HomeView(UserModel model ) {
+        this.model=model;
         initComponents();
-         // Center the frame on the screen
+   // Center the frame on the screen
         setLocationRelativeTo(null);
         
         // Set the frame to not be resizable
         setResizable(false);
-    
     }
+   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,63 +48,41 @@ public class HomeView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg = new javax.swing.JPanel();
-        LeftSidePanel = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        donateLbl = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        doonateRqstLbl = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        donateSearchLbl = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        logOutLbl = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setFocusable(false);
+        setResizable(false);
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        bg.setBackground(new java.awt.Color(0, 0, 0));
-        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground(new java.awt.Color(244, 172, 183));
+        jPanel1.setForeground(new java.awt.Color(204, 153, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LeftSidePanel.setBackground(new java.awt.Color(251, 236, 254));
-        LeftSidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(255, 202, 212));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(249, 200, 228));
+        jPanel4.setBackground(new java.awt.Color(196, 212, 202));
 
-        jLabel3.setText("Donation Requests");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        donateLbl.setText("Donate");
+        donateLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                donateLblMouseClicked(evt);
             }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        LeftSidePanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 230, 40));
-
-        jPanel4.setBackground(new java.awt.Color(247, 182, 219));
-
-        jLabel4.setText("jLabel4");
-
-        jLabel1.setText("Search Transaction");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                donateLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                donateLblMouseExited(evt);
             }
         });
 
@@ -97,30 +90,29 @@ public class HomeView extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(donateLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(donateLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        LeftSidePanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 230, 40));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 280, 50));
 
-        jPanel5.setBackground(new java.awt.Color(251, 218, 237));
+        jPanel5.setBackground(new java.awt.Color(184, 204, 191));
 
-        jLabel5.setText("Donate");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        doonateRqstLbl.setText("Request Donation");
+        doonateRqstLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                doonateRqstLblMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                doonateRqstLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                doonateRqstLblMouseExited(evt);
             }
         });
 
@@ -128,53 +120,59 @@ public class HomeView extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
+                .addComponent(doonateRqstLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(doonateRqstLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        LeftSidePanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 40));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 280, 50));
 
-        jPanel6.setBackground(new java.awt.Color(245, 163, 209));
+        jPanel6.setBackground(new java.awt.Color(172, 195, 180));
 
-        jLabel6.setText("jLabel4");
-
-        jLabel2.setText("Coming Soon");
+        donateSearchLbl.setText("Search Donations");
+        donateSearchLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                donateSearchLblMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                donateSearchLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                donateSearchLblMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(donateSearchLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(donateSearchLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        LeftSidePanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 230, 40));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 280, 50));
 
-        jPanel7.setBackground(new java.awt.Color(251, 218, 237));
+        jPanel7.setBackground(new java.awt.Color(160, 186, 169));
 
-        jLabel7.setText("Log Out");
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        logOutLbl.setText("Log Out");
+        logOutLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                logOutLblMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logOutLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logOutLblMouseExited(evt);
             }
         });
 
@@ -183,83 +181,112 @@ public class HomeView extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(logOutLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(logOutLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        LeftSidePanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 230, 40));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 280, 50));
 
-        bg.add(LeftSidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -3, 230, 430));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 470));
 
-        jPanel1.setBackground(new java.awt.Color(77, 126, 168));
+        jPanel3.setBackground(new java.awt.Color(244, 172, 183));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 460, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 460, 427));
-        jPanel1.getAccessibleContext().setAccessibleParent(bg);
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 460, 460));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void donateLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donateLblMouseClicked
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        SearchView searchView = new SearchView();
-        searchView.setVisible(true);
-        searchView.pack();
-        searchView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        // TODO add your handling code here:
-        TableView tableView = new TableView();
+        System.out.println("Donate Label Clicked");
+        TableView tableView = new TableView(model);
         tableView.setVisible(true);
         tableView.pack();
         tableView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_jLabel5MouseClicked
+        
+    }//GEN-LAST:event_donateLblMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void donateLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donateLblMouseEntered
         // TODO add your handling code here:
-        RequestsView requestView = new RequestsView();
-        requestView.setVisible(true);
-        requestView.pack();
-        requestView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jLabel3MouseClicked
+        donateLbl.setForeground(Color.BLUE);
+    }//GEN-LAST:event_donateLblMouseEntered
 
+    private void donateLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donateLblMouseExited
+        // TODO add your handling code here:
+        donateLbl.setForeground(Color.BLACK);
+    }//GEN-LAST:event_donateLblMouseExited
+
+    private void doonateRqstLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doonateRqstLblMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Request Label Clickked");
+        ReceiverModel benefeciary = new ReceiverModel();
+        RequestsView reqView = new RequestsView(model,benefeciary);
+        
+        reqView.setVisible(true);
+        reqView.pack();
+        reqView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_doonateRqstLblMouseClicked
+
+    private void doonateRqstLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doonateRqstLblMouseEntered
+        // TODO add your handling code here:
+        doonateRqstLbl.setForeground(Color.BLUE);
+    }//GEN-LAST:event_doonateRqstLblMouseEntered
+
+    private void doonateRqstLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doonateRqstLblMouseExited
+        // TODO add your handling code here:
+        doonateRqstLbl.setForeground(Color.BLACK);
+    }//GEN-LAST:event_doonateRqstLblMouseExited
+
+    private void donateSearchLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donateSearchLblMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Search Donation Clicked");
+    }//GEN-LAST:event_donateSearchLblMouseClicked
+
+    private void donateSearchLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donateSearchLblMouseEntered
+        // TODO add your handling code here:
+        donateSearchLbl.setForeground(Color.BLUE);
+    }//GEN-LAST:event_donateSearchLblMouseEntered
+
+    private void donateSearchLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donateSearchLblMouseExited
+        // TODO add your handling code here:
+        donateSearchLbl.setForeground(Color.BLACK);
+    }//GEN-LAST:event_donateSearchLblMouseExited
+
+    private void logOutLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logOutLblMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Log out Label Clicked");
+    }//GEN-LAST:event_logOutLblMouseClicked
+
+    private void logOutLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logOutLblMouseEntered
+        // TODO add your handling code here:
+        logOutLbl.setForeground(Color.BLUE);
+    }//GEN-LAST:event_logOutLblMouseEntered
+
+    private void logOutLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logOutLblMouseExited
+        // TODO add your handling code here:
+        logOutLbl.setForeground(Color.BLACK);
+    }//GEN-LAST:event_logOutLblMouseExited
+
+    
     /**
      * @param args the command line arguments
      */
@@ -286,38 +313,25 @@ public class HomeView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeView().setVisible(true);
+                new HomeView(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel LeftSidePanel;
-    private javax.swing.JPanel bg;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel donateLbl;
+    private javax.swing.JLabel donateSearchLbl;
+    private javax.swing.JLabel doonateRqstLbl;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel logOutLbl;
     // End of variables declaration//GEN-END:variables
-
-    public Object getDonate() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getDonationReq() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
